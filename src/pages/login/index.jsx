@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Input, Button } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { MailOutlined, LockOutlined } from '@ant-design/icons'
+import { login } from '../../api'
 
 import './index.less'
 /*
@@ -11,6 +12,13 @@ export default class Login extends Component {
     render() {
         const onFinish = (values) => {
             console.log('Success:', values)
+            login(values)
+            .then(res => {
+                console.log('res:', res)
+            })
+            .catch(err =>{
+                console.log('err:', err)
+            })
         }
 
         const onFinishFailed = (errorInfo) => {
@@ -33,15 +41,18 @@ export default class Login extends Component {
                         onFinishFailed={onFinishFailed}
                     >
                         <Form.Item
-                            name="username"
+                            name="email"
                             rules={[
                                 {
                                     required: true,
-                                    message: '请输入账号!',
+                                    message: '请输入邮箱!',
                                 },
+                                {
+                                    type: 'email',
+                                }
                             ]}
                         >
-                            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                            <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
                         </Form.Item>
 
                         <Form.Item
