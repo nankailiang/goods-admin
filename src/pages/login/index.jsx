@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Form, Input, Button, message} from 'antd'
 import { MailOutlined, LockOutlined } from '@ant-design/icons'
 import { login } from '../../api'
+import { saveUser } from '../../utils/storageUtils'
+
 
 import './index.less'
 /*
@@ -11,9 +13,7 @@ import './index.less'
 export default class Login extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            data: {}
-        }
+        this.state = {}
     }
 
     render() {
@@ -23,7 +23,8 @@ export default class Login extends Component {
             .then(res => {
                 console.log('res:', res)
                 if(res.data.data) {
-                    this.props.history.replace('/')
+                    saveUser(res.data.data)
+                    this.props.history.push('/')
                 } else {
                     message.error(res.data.errors[0].msg)
                 }
