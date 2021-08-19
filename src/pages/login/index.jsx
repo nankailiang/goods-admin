@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Input, Button, message} from 'antd'
 import { MailOutlined, LockOutlined } from '@ant-design/icons'
 import { login } from '../../api'
-import { saveUser } from '../../utils/storageUtils'
+import { saveUser, getUser } from '../../utils/storageUtils'
 
 
 import './index.less'
@@ -11,9 +11,11 @@ import './index.less'
 */
 
 export default class Login extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {}
+    componentDidMount = () => {
+        const user = getUser()
+        if(user._id) {
+            this.props.history.push('/')
+        }
     }
 
     render() {

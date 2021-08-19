@@ -7,5 +7,5 @@ export const saveUser = user => localStorage.setItem(USER_KEY, JSON.stringify(us
 // 保存user
 export const getUser = () => JSON.parse(localStorage.getItem(USER_KEY) || '{}')
 
-// 保存user
+// 移除user
 export const removeUser = () => localStorage.removeItem(USER_KEY)
