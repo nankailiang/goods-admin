@@ -11,6 +11,10 @@ import './index.less'
 */
 
 export default class Login extends Component {
+
+    state = {
+    }
+
     componentDidMount = () => {
         const user = getUser()
         if(user._id) {
@@ -70,7 +74,6 @@ export default class Login extends Component {
                             >
                                 <Input prefix={<MailOutlined className="site-form-item-icon" />}
                                     placeholder="Email"
-                                    defaultValue="1003857254@qq.com" 
                                 />
                             </Form.Item>
 
@@ -86,7 +89,6 @@ export default class Login extends Component {
                                 <Input.Password prefix={<LockOutlined className="site-form-item-icon" />}
                                     type="password"
                                     placeholder="Password"
-                                    defaultValue="nan123456"
                                 />
                             </Form.Item>
 
